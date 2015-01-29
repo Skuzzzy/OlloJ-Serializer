@@ -58,10 +58,12 @@ public class Olloj {
 
     public String getTabFromLevel(int level)
     {
-        if(level == -1) //First Level object opener will have a tabDepth of -1. We actually want it to have a tabDepth of 0
+        //First Level object opener will have a tabDepth of -1. We actually want it to have a tabDepth of 0
+        if(level == -1)
         {
             level = 0;
         }
+        // Creates a character array containing only null characters of a certain length, then replaces those with tabs, and concatenates them as a string
         return new String(new char[level]).replace("\0", "\t");
     }
 }
