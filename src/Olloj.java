@@ -11,9 +11,9 @@ public class Olloj {
 
     // Objectname contains all the arguments
     String objectName;
-    ollojPair[] arguments;
+    OllojPair[] arguments;
 
-    public Olloj(String objectName,ollojPair[] arguments)
+    public Olloj(String objectName,OllojPair[] arguments)
     {
         this.objectName = objectName;
         this.arguments = arguments;
@@ -35,7 +35,7 @@ public class Olloj {
         // Creates the main object container for the current Olloj
         // tabDepth-1 is used as when recursively getting objects, we want them to be printed with one less tab than their members
         OllojContainer.append(getTabFromLevel(tabDepth-1)+open + objectName + close + endl);
-        for(ollojPair each : arguments)
+        for(OllojPair each : arguments)
         {
             if(each.containsOlloJ()) // Contains an object
             {

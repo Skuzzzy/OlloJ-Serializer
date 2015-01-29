@@ -1,7 +1,7 @@
 /**
  * Created by dan on 1/28/15.
  */
-public class ollojPair {
+public class OllojPair {
 
      private String objectName;
 
@@ -13,7 +13,7 @@ public class ollojPair {
     private boolean containsOlloj;
 
     // (String,String)
-    public ollojPair(String objectName,String value)
+    public OllojPair(String objectName,String value)
     {
         this.objectName = objectName;
         this.value = value;
@@ -22,7 +22,7 @@ public class ollojPair {
 
     // (String,OllojSerializable)
     // String is generated from the OllojSerializable object class name
-    public ollojPair(OllojSerializable OlloJObj)
+    public OllojPair(OllojSerializable OlloJObj)
     {
         this.objectName = OlloJObj.getClass().getName();
         this.ollojValue = OlloJObj;

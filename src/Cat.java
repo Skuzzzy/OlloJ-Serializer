@@ -10,7 +10,7 @@ public class Cat implements OllojSerializable
 
     public Olloj toOlloj()
     {
-        ollojPair[] arguments = {new ollojPair("Age",String.valueOf(age)),new ollojPair("Name",name)};
+        OllojPair[] arguments = {new OllojPair("Age",String.valueOf(age)),new OllojPair("Name",name)};
 
         return new Olloj(this.getClass().getName(),arguments);
     }

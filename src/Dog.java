@@ -23,16 +23,16 @@ public class Dog implements OllojSerializable
 
     public Olloj toOlloj()
     {
-        ArrayList<ollojPair> arguments = new ArrayList<ollojPair>();
-        arguments.add(new ollojPair("Age",String.valueOf(age)));
-        arguments.add(new ollojPair("Name",name));
-        arguments.add(new ollojPair(catata));
+        ArrayList<OllojPair> arguments = new ArrayList<OllojPair>();
+        arguments.add(new OllojPair("Age",String.valueOf(age)));
+        arguments.add(new OllojPair("Name",name));
+        arguments.add(new OllojPair(catata));
         for(String s : toys)
         {
-            arguments.add(new ollojPair("Toy",s));
+            arguments.add(new OllojPair("Toy",s));
         }
 
-        ollojPair[] members = arguments.toArray(new ollojPair[arguments.size()]);
+        OllojPair[] members = arguments.toArray(new OllojPair[arguments.size()]);
 
         return new Olloj(this.getClass().getName(),members);
     }
