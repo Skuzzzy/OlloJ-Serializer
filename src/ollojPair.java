@@ -1,22 +1,22 @@
 /**
  * Created by dan on 1/28/15.
  */
-public class OlloJPair {
+public class ollojPair {
 
     String objectName;
     String value;
 
-    private OlloJSerializable OlloJvalue;
+    private OllojSerializable OlloJvalue;
     private boolean containsOlloJ;
 
-    public OlloJPair(String objectName,String value)
+    public ollojPair(String objectName,String value)
     {
         this.objectName = objectName;
         this.value = value;
         containsOlloJ = false;
     }
 
-    public OlloJPair(OlloJSerializable OlloJObj)
+    public ollojPair(OllojSerializable OlloJObj)
     {
         this.objectName = OlloJObj.getClass().getName();
         this.OlloJvalue = OlloJObj;

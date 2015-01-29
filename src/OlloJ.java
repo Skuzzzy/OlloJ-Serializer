@@ -9,9 +9,9 @@ public class OlloJ {
     static final String endl = "\n";
 
     String objectName;
-    OlloJPair[] arguments;
+    ollojPair[] arguments;
 
-    public OlloJ(String objectName,OlloJPair[] arguments)
+    public OlloJ(String objectName,ollojPair[] arguments)
     {
         this.objectName = objectName;
         this.arguments = arguments;
@@ -27,7 +27,7 @@ public class OlloJ {
 
         StringBuilder OlloJContainer = new StringBuilder();
         OlloJContainer.append(getTabFromLevel(tabDepth-1)+open + objectName + close + endl);
-        for(OlloJPair each : arguments)
+        for(ollojPair each : arguments)
         {
             if(each.containsOlloJ()) // Is an object
             {

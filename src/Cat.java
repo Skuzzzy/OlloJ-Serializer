@@ -3,14 +3,14 @@
  */
 
 // This class is trash and only was thrown together as a demonstration
-public class Cat implements OlloJSerializable
+public class Cat implements OllojSerializable
 {
     public int age = 200;
     public String name = "Muffins";
 
     public OlloJ toOlloJ()
     {
-        OlloJPair[] arguments = {new OlloJPair("Age",String.valueOf(age)),new OlloJPair("Name",name)};
+        ollojPair[] arguments = {new ollojPair("Age",String.valueOf(age)),new ollojPair("Name",name)};
 
         return new OlloJ(this.getClass().getName(),arguments);
     }
