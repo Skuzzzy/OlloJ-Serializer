@@ -3,5 +3,5 @@
  */
 public interface OllojSerializable
 {
-    public OlloJ toOlloJ();
+    public Olloj toOlloj();
 }

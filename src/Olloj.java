@@ -1,7 +1,7 @@
 /**
  * Created by dan on 1/28/15.
  */
-public class OlloJ {
+public class Olloj {
 
     static final String open = "<";
     static final String close = ">";
@@ -11,18 +11,18 @@ public class OlloJ {
     String objectName;
     ollojPair[] arguments;
 
-    public OlloJ(String objectName,ollojPair[] arguments)
+    public Olloj(String objectName,ollojPair[] arguments)
     {
         this.objectName = objectName;
         this.arguments = arguments;
     }
 
-    public String generateOlloJString()
+    public String generateOllojString()
     {
-        return generateOlloJString(0);
+        return generateOllojString(0);
     }
 
-    public String generateOlloJString(int tabDepth)
+    public String generateOllojString(int tabDepth)
     {
 
         StringBuilder OlloJContainer = new StringBuilder();
@@ -31,7 +31,7 @@ public class OlloJ {
         {
             if(each.containsOlloJ()) // Is an object
             {
-                OlloJContainer.append(getTabFromLevel(tabDepth+1)+each.getOlloJ().generateOlloJString(tabDepth+1));
+                OlloJContainer.append(getTabFromLevel(tabDepth+1)+each.getOlloj().generateOllojString(tabDepth+1));
                 OlloJContainer.append(endl);
             }
             else // Contains a string

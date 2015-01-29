@@ -9,10 +9,10 @@ public class Dog implements OllojSerializable
     public String name = "Faker";
     Cat catata = new Cat();
 
-    public OlloJ toOlloJ()
+    public Olloj toOlloj()
     {
         ollojPair[] arguments = {new ollojPair("Age",String.valueOf(age)),new ollojPair("Name",name),new ollojPair(catata)};
 
-        return new OlloJ(this.getClass().getName(),arguments);
+        return new Olloj(this.getClass().getName(),arguments);
     }
 }

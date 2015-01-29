@@ -6,21 +6,21 @@ public class ollojPair {
     String objectName;
     String value;
 
-    private OllojSerializable OlloJvalue;
-    private boolean containsOlloJ;
+    private OllojSerializable ollojValue;
+    private boolean containsOlloj;
 
     public ollojPair(String objectName,String value)
     {
         this.objectName = objectName;
         this.value = value;
-        containsOlloJ = false;
+        containsOlloj = false;
     }
 
     public ollojPair(OllojSerializable OlloJObj)
     {
         this.objectName = OlloJObj.getClass().getName();
-        this.OlloJvalue = OlloJObj;
-        containsOlloJ = true;
+        this.ollojValue = OlloJObj;
+        containsOlloj = true;
     }
     public String getObjectName()
     {
@@ -33,10 +33,10 @@ public class ollojPair {
 
     public boolean containsOlloJ()
     {
-        return containsOlloJ;
+        return containsOlloj;
     }
-    public OlloJ getOlloJ()
+    public Olloj getOlloj()
     {
-        return OlloJvalue.toOlloJ();
+        return ollojValue.toOlloj();
     }
 }
