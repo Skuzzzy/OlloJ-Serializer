@@ -25,26 +25,26 @@ public class Olloj {
     public String generateOllojString(int tabDepth)
     {
 
-        StringBuilder OlloJContainer = new StringBuilder();
-        OlloJContainer.append(getTabFromLevel(tabDepth-1)+open + objectName + close + endl);
+        StringBuilder OllojContainer = new StringBuilder();
+        OllojContainer.append(getTabFromLevel(tabDepth-1)+open + objectName + close + endl);
         for(ollojPair each : arguments)
         {
             if(each.containsOlloJ()) // Is an object
             {
-                OlloJContainer.append(getTabFromLevel(tabDepth+1)+each.getOlloj().generateOllojString(tabDepth+1));
-                OlloJContainer.append(endl);
+                OllojContainer.append(getTabFromLevel(tabDepth+1)+each.getOlloj().generateOllojString(tabDepth + 1));
+                OllojContainer.append(endl);
             }
             else // Contains a string
             {
-                OlloJContainer.append(getTabFromLevel(tabDepth+1)+open+each.getObjectName()+close);
-                OlloJContainer.append(each.getValue());
-                OlloJContainer.append(secondopen+each.getObjectName()+close);
-                OlloJContainer.append(endl);
+                OllojContainer.append(getTabFromLevel(tabDepth+1)+open+each.getObjectName()+close);
+                OllojContainer.append(each.getValue());
+                OllojContainer.append(secondopen + each.getObjectName() + close);
+                OllojContainer.append(endl);
             }
 
         }
-        OlloJContainer.append(getTabFromLevel(tabDepth)+secondopen+objectName+close);
-        return OlloJContainer.toString();
+        OllojContainer.append(getTabFromLevel(tabDepth)+secondopen+objectName+close);
+        return OllojContainer.toString();
     }
 
     public String getTabFromLevel(int level)
