@@ -47,10 +47,14 @@ public class Dog implements OllojSerializable
         arguments.add(new OllojPair("Name",name));
         arguments.add(new OllojPair(catata));
 
-        for(String s : toys)
+        OllojPair[] stuff = new OllojPair[toys.size()];
+        for(int i=0;i<toys.size();i++)
         {
-            arguments.add(new OllojPair("Toy",s));
+            stuff[i] = new OllojPair("Toy",toys.get(i));
         }
+        OllojContainer box = new OllojContainer("Box",stuff);
+        arguments.add(new OllojPair(box));
+
 
         OllojPair[] members = arguments.toArray(new OllojPair[arguments.size()]);
 

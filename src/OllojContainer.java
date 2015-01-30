@@ -3,21 +3,16 @@
  */
 public class OllojContainer implements OllojSerializable{
     String structureName;
-    OllojSerializable[] members;
+    OllojPair[] members;
 
-    public OllojContainer(String structureName,OllojSerializable[] members)
+    public OllojContainer(String structureName,OllojPair[] members)
     {
         this.structureName = structureName;
         this.members = members;
     }
 
-    public Olloj toOlloj() //TODO
+    public Olloj toOlloj()
     {
-        Olloj[] arguments = new Olloj[members.length];
-        for(int index=0;index<members.length;index++)
-        {
-            arguments[index] = members[index].toOlloj(); // TODO
-        }
-        return arguments[0]; //TODO
+        return new Olloj(structureName,members);
     }
 }
