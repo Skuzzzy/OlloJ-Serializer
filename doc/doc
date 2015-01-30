@@ -19,3 +19,7 @@ In order to generate this, each object must implement the OllojSerializeable int
 
 In order to deserialize the objects from a String input like above, each object being deserialized must implement a constructor that takes an OllojStructure as its parameter.
 The OllojStructure serves as an interface with the structure, formatted as a String like above.
+
+OllojStructure Strings
+OllojStructure -> <StructureName>OllojStructure[]</StructureName> | <StructureName>String</StructureName>
+
