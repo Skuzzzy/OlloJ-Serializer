@@ -16,8 +16,8 @@ public class OllojStructure
         this.internalStructure = generateInternalStructure(fullStructure);
     }
 
-    // This method just assumes the person calling it will be reasonable and input a correct member name
-    // Right now it just gets the first member with that name
+    // This method assumes the person calling it will input a correct member name
+    // This will return the first member with that name
     public OllojStructure getMember(String memberName)
     {
         int openingIndex = fullStructure.indexOf(Olloj.open+memberName+Olloj.close);
@@ -28,6 +28,8 @@ public class OllojStructure
         return new OllojStructure(fullStructure.substring(openingIndex,endClosingIndex+1));
     }
 
+    // This method assumes the person calling it will input a correct member name
+    // This will return all members with that name, EVEN SUB-MEMBERS THAT SHARE THE SAME NAME
     public OllojStructure[] getMembers(String memberName)
     {
         int currentSearchIndex = 0;

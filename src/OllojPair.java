@@ -3,7 +3,7 @@
  */
 public class OllojPair {
 
-     private String objectName;
+    private String objectName;
 
     // The pair value will either be a string or an OllojSerializable object
     private String value;
@@ -34,6 +34,7 @@ public class OllojPair {
         return objectName;
     }
 
+    // Get the String value the pair contains, throws error if it contains an OllojObject instead
     public String getValue()
     {
         if(!containsOlloj)
@@ -45,6 +46,7 @@ public class OllojPair {
             throw new NullPointerException("Trying to access a String value of ollojPair when it is a OllojSerializable");
         }
     }
+    // Get the OllojObject value the pair contains, throws error if it contains an String instead
     public Olloj getOlloj()
     {
         if(containsOlloj)
@@ -57,6 +59,7 @@ public class OllojPair {
         }
     }
 
+    // Boolean to check which pairing type the pair is so we don't try to read null objects
     public boolean containsOlloJ()
     {
         return containsOlloj;
