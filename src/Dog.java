@@ -30,7 +30,8 @@ public class Dog implements OllojSerializable
         this.age = Integer.parseInt(oj.getMember("Age").getInternalStructure());
         this.name = oj.getMember("Name").getInternalStructure();
 
-        OllojStructure[] ojToys = oj.getMembers("Toy");
+        OllojStructure ojBox = oj.getMember("Box");
+        OllojStructure[] ojToys = ojBox.getMembers("Toy");
         toys = new ArrayList<String>();
         for(OllojStructure toy : ojToys)
         {
@@ -54,7 +55,6 @@ public class Dog implements OllojSerializable
         }
         OllojContainer box = new OllojContainer("Box",stuff);
         arguments.add(new OllojPair(box));
-
 
         OllojPair[] members = arguments.toArray(new OllojPair[arguments.size()]);
 
