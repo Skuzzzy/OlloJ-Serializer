@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Created by dan on 1/30/15.
  */
@@ -24,6 +26,26 @@ public class OllojStructure
         int endClosingIndex = fullStructure.indexOf(Olloj.close,endOpeningIndex);
 
         return new OllojStructure(fullStructure.substring(openingIndex,endClosingIndex+1));
+    }
+
+    public ArrayList<OllojStructure> getMembers(String memberName)
+    {
+        int currentSearchIndex = 0;
+        ArrayList<OllojStructure> members = new ArrayList<OllojStructure>();
+
+        while(fullStructure.indexOf(Olloj.open+memberName+Olloj.close,currentSearchIndex) >= 0)
+        {
+            int openingIndex = fullStructure.indexOf(Olloj.open+memberName+Olloj.close,currentSearchIndex);
+
+            int endOpeningIndex = fullStructure.indexOf(Olloj.secondopen+memberName+Olloj.close,currentSearchIndex);
+            int endClosingIndex = fullStructure.indexOf(Olloj.close,endOpeningIndex);
+            members.add(new OllojStructure(fullStructure.substring(openingIndex,endClosingIndex+1)));
+
+            currentSearchIndex = endClosingIndex+1;
+        }
+
+
+        return members;
     }
 
     public String getInternalStructure()
