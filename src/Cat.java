@@ -14,6 +14,11 @@ public class Cat implements OllojSerializable
         name = "Muffins";
     }
 
+    public Cat(OllojStructure oj)
+    {
+        this.age = Integer.parseInt(oj.getMember("Age").getInternalStructure());
+        this.name = oj.getMember("Name").getInternalStructure();
+    }
 
     public Olloj toOlloj()
     {

@@ -7,18 +7,37 @@ import java.util.ArrayList;
 // This class is trash and only was thrown together as a demonstration
 public class Dog implements OllojSerializable
 {
-    public int age = 5;
-    public String name = "Faker";
-    Cat catata = new Cat();
+    public int age;
+    public String name;
+    Cat catata;
     ArrayList<String> toys;
 
     public Dog()
     {
+        age = 5;
+        name = "Faker";
+        catata = new Cat();
+
         toys = new ArrayList<String>();
         toys.add("Ball");
         toys.add("Stick");
         toys.add("Sqeaky Ball");
         toys.add("Chips");
+    }
+
+    public Dog(OllojStructure oj)
+    {
+        this.age = Integer.parseInt(oj.getMember("Age").getInternalStructure());
+        this.name = oj.getMember("Name").getInternalStructure();
+
+        OllojStructure[] ojToys = oj.getMembers("Toy");
+        toys = new ArrayList<String>();
+        for(OllojStructure toy : ojToys)
+        {
+            toys.add(toy.getInternalStructure());
+        }
+
+        this.catata = new Cat(oj.getMember("Cat"));
     }
 
     public Olloj toOlloj()
@@ -27,6 +46,7 @@ public class Dog implements OllojSerializable
         arguments.add(new OllojPair("Age",String.valueOf(age)));
         arguments.add(new OllojPair("Name",name));
         arguments.add(new OllojPair(catata));
+
         for(String s : toys)
         {
             arguments.add(new OllojPair("Toy",s));
