@@ -28,7 +28,7 @@ public class OllojStructure
         return new OllojStructure(fullStructure.substring(openingIndex,endClosingIndex+1));
     }
 
-    public ArrayList<OllojStructure> getMembers(String memberName)
+    public OllojStructure[] getMembers(String memberName)
     {
         int currentSearchIndex = 0;
         ArrayList<OllojStructure> members = new ArrayList<OllojStructure>();
@@ -44,13 +44,29 @@ public class OllojStructure
             currentSearchIndex = endClosingIndex+1;
         }
 
+        // Moving the ArrayList into an array for the return method
+        OllojStructure[] membersArray = new OllojStructure[members.size()];
+        for(int i=0;i<members.size();i++)
+        {
+            membersArray[i] = members.get(i);
+        }
 
-        return members;
+        return membersArray;
     }
 
     public String getInternalStructure()
     {
         return internalStructure;
+    }
+
+    public String getFullStructure()
+    {
+        return fullStructure;
+    }
+
+    public String getStructureName()
+    {
+        return structureName;
     }
 
     private String generateInternalStructure(String fullStructure)
@@ -60,7 +76,7 @@ public class OllojStructure
 
         this.structureName = fullStructure.substring(openingIndex+1,closingIndex);
 
-        int endOpeningIndex = fullStructure.indexOf(Olloj.secondopen+structureName+ Olloj.close);
+        int endOpeningIndex = fullStructure.indexOf(Olloj.secondopen+structureName + Olloj.close);
 
         return fullStructure.substring(closingIndex+1,endOpeningIndex);
     }

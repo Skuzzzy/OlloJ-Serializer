@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -9,7 +7,7 @@ public class Main {
 
         //System.out.println(kek.getInternalStructure());
         //System.out.println(kek.getMember("Age").getInternalStructure());
-        ArrayList<OllojStructure> wohoo  = kek.getMembers("Toy");
+        OllojStructure[] wohoo  = kek.getMembers("Toy");
         for(OllojStructure q : wohoo)
         {
             System.out.println(q.getInternalStructure());
