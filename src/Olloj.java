@@ -4,10 +4,10 @@
 public class Olloj {
 
     // String constants used in constructing the serialization
-    static final String open = "<";
-    static final String close = ">";
-    static final String secondopen = "</";
-    static final String endl = "\n";
+    public static final String open = "<";
+    public static final String close = ">";
+    public static final String secondopen = "</";
+    public static final String endl = "\n";
 
     // Objectname contains all the arguments
     String objectName;
