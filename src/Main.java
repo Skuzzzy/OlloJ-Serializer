@@ -17,7 +17,12 @@ public class Main {
 
         OllojStructure asd = new OllojStructure(chips.toOlloj().generateOllojString());
         //System.out.println(asd.getFullStructure());
-        System.out.println(asd.getMember("Age").getFullStructure());
+        for(OllojStructure s : asd.getMembers("Toy"))
+        {
+            System.out.println(s.getFullStructure());
+        }
+
+        System.out.println(asd.getFullStructure());
         //Dog max = new Dog(asd);
 
         //System.out.println(max.toOlloj().generateOllojString());

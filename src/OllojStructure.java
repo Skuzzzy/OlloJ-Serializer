@@ -21,16 +21,6 @@ public class OllojStructure
     public OllojStructure getMember(String memberName)
     {
         return getMemberFromIndex(memberName,0);
-        /*
-        int openingIndex = fullStructure.indexOf(Olloj.open+memberName+Olloj.close);
-
-        int possibleOpeningIndex = fullStructure.indexOf(Olloj.open+memberName+Olloj.close,openingIndex+1);
-
-        int endOpeningIndex = fullStructure.indexOf(Olloj.secondopen+memberName+Olloj.close);
-        int endClosingIndex = fullStructure.indexOf(Olloj.close,endOpeningIndex);
-
-        return new OllojStructure(fullStructure.substring(openingIndex,endClosingIndex+1));
-        */
     }
 
     public OllojStructure getMemberFromIndex(String memberName, int searchIndex)
@@ -39,19 +29,13 @@ public class OllojStructure
         int structureOpeningIndex = fullStructure.indexOf(Olloj.open+memberName+Olloj.close,searchIndex);
         searchIndex = structureOpeningIndex + 1;
 
-        //System.out.println(fullStructure.indexOf(Olloj.secondopen + memberName + Olloj.close, searchIndex));
-
-
         while(searchIndex<fullStructure.length())
         {
             int possibleNestedIndex = fullStructure.indexOf(Olloj.open+memberName+Olloj.close,searchIndex);
             int closingIndex = fullStructure.indexOf(Olloj.secondopen+memberName+Olloj.close,searchIndex);
-            System.out.println(possibleNestedIndex);
-            System.out.println(closingIndex+"\n");
 
             if((possibleNestedIndex > 0) && (possibleNestedIndex < closingIndex)) // (We found another opening index with the same name) && (It comes before the expected closing index)
             {
-
                 depth++; // We are now in a nested search
                 searchIndex = possibleNestedIndex + 1; // Move search index past the nested index
             }
@@ -77,21 +61,16 @@ public class OllojStructure
     }
 
     // This method assumes the person calling it will input a correct member name
-    // This will return all members with that name, EVEN SUB-MEMBERS THAT SHARE THE SAME NAME
     public OllojStructure[] getMembers(String memberName)
     {
         int currentSearchIndex = 0;
         ArrayList<OllojStructure> members = new ArrayList<OllojStructure>();
 
-        while(fullStructure.indexOf(Olloj.open+memberName+Olloj.close,currentSearchIndex) >= 0)
+        while(fullStructure.indexOf(Olloj.open+memberName+Olloj.close,currentSearchIndex) > 0)
         {
             int openingIndex = fullStructure.indexOf(Olloj.open+memberName+Olloj.close,currentSearchIndex);
-
-            int endOpeningIndex = fullStructure.indexOf(Olloj.secondopen+memberName+Olloj.close,currentSearchIndex);
-            int endClosingIndex = fullStructure.indexOf(Olloj.close,endOpeningIndex);
-            members.add(new OllojStructure(fullStructure.substring(openingIndex,endClosingIndex+1)));
-
-            currentSearchIndex = endClosingIndex+1;
+            members.add(getMemberFromIndex(memberName,openingIndex));
+            currentSearchIndex = openingIndex+members.get(0).getFullStructure().length();
         }
 
         // Moving the ArrayList into an array for the return method
