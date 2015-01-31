@@ -1,6 +1,8 @@
 public class Main {
 
     public static void main(String[] args) {
+        System.out.println("GO");
+
         Dog chips = new Dog();
         //System.out.println(chips.toOlloj().generateOllojString());
         //OllojStructure kek = new OllojStructure(chips.toOlloj().generateOllojString());
@@ -14,8 +16,12 @@ public class Main {
         //}
 
         OllojStructure asd = new OllojStructure(chips.toOlloj().generateOllojString());
-        Dog max = new Dog(asd);
+        //System.out.println(asd.getFullStructure());
+        System.out.println(asd.getMember("Age").getFullStructure());
+        //Dog max = new Dog(asd);
 
-        System.out.println(max.toOlloj().generateOllojString());
+        //System.out.println(max.toOlloj().generateOllojString());
+
+        System.out.println("DONE");
     }
 }

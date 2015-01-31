@@ -20,12 +20,60 @@ public class OllojStructure
     // This will return the first member with that name
     public OllojStructure getMember(String memberName)
     {
+        return getMemberFromIndex(memberName,0);
+        /*
         int openingIndex = fullStructure.indexOf(Olloj.open+memberName+Olloj.close);
+
+        int possibleOpeningIndex = fullStructure.indexOf(Olloj.open+memberName+Olloj.close,openingIndex+1);
 
         int endOpeningIndex = fullStructure.indexOf(Olloj.secondopen+memberName+Olloj.close);
         int endClosingIndex = fullStructure.indexOf(Olloj.close,endOpeningIndex);
 
         return new OllojStructure(fullStructure.substring(openingIndex,endClosingIndex+1));
+        */
+    }
+
+    public OllojStructure getMemberFromIndex(String memberName, int searchIndex)
+    {
+        int depth = 0;
+        int structureOpeningIndex = fullStructure.indexOf(Olloj.open+memberName+Olloj.close,searchIndex);
+        searchIndex = structureOpeningIndex + 1;
+
+        //System.out.println(fullStructure.indexOf(Olloj.secondopen + memberName + Olloj.close, searchIndex));
+
+
+        while(searchIndex<fullStructure.length())
+        {
+            int possibleNestedIndex = fullStructure.indexOf(Olloj.open+memberName+Olloj.close,searchIndex);
+            int closingIndex = fullStructure.indexOf(Olloj.secondopen+memberName+Olloj.close,searchIndex);
+            System.out.println(possibleNestedIndex);
+            System.out.println(closingIndex+"\n");
+
+            if((possibleNestedIndex > 0) && (possibleNestedIndex < closingIndex)) // (We found another opening index with the same name) && (It comes before the expected closing index)
+            {
+
+                depth++; // We are now in a nested search
+                searchIndex = possibleNestedIndex + 1; // Move search index past the nested index
+            }
+            else
+            {
+                if(depth>0)
+                {
+                    depth--;
+                }
+
+                searchIndex = closingIndex + 1; // Move search index past the closing index
+            }
+
+            if(depth == 0)
+            {
+                int endClosingIndex = fullStructure.indexOf(Olloj.close,searchIndex);
+                return new OllojStructure(fullStructure.substring(structureOpeningIndex,endClosingIndex+1));
+            }
+
+        }
+
+        throw new NullPointerException("Can't find the closing brace for a structure");
     }
 
     // This method assumes the person calling it will input a correct member name
