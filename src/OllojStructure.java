@@ -41,22 +41,16 @@ public class OllojStructure
             }
             else
             {
-                if(depth>0)
+                // This is the only exit point for this method without throwing an error
+                if(depth == 0)
                 {
-                    depth--;
+                    int endClosingIndex = fullStructure.indexOf(Olloj.close,closingIndex + 1);
+                    return new OllojStructure(fullStructure.substring(structureOpeningIndex,endClosingIndex+1));
                 }
-
+                depth--;
                 searchIndex = closingIndex + 1; // Move search index past the closing index
             }
-
-            if(depth == 0)
-            {
-                int endClosingIndex = fullStructure.indexOf(Olloj.close,searchIndex);
-                return new OllojStructure(fullStructure.substring(structureOpeningIndex,endClosingIndex+1));
-            }
-
         }
-
         throw new NullPointerException("Can't find the closing brace for a structure");
     }
 
