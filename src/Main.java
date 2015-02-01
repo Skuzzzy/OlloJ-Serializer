@@ -1,32 +1,31 @@
-public class Main {
+public class Main
+{
 
-    public static void main(String[] args) {
-        System.out.println("GO");
+    public static void main(String[] args)
+    {
 
         Dog chips = new Dog();
-        //System.out.println(chips.toOlloj().generateOllojString());
-        //OllojStructure kek = new OllojStructure(chips.toOlloj().generateOllojString());
+        System.out.println(chips.toOlloj().generateOllojString());
+        OllojStructure kek = new OllojStructure(chips.toOlloj().generateOllojString());
 
-        //System.out.println(kek.getInternalStructure());
-        //System.out.println(kek.getMember("Age").getInternalStructure());
-        //OllojStructure[] wohoo  = kek.getMembers("Toy");
-        //for(OllojStructure q : wohoo)
-        //{
-        //    System.out.println(q.getInternalStructure());
-        //}
+        System.out.println(kek.getInternalStructure());
+        System.out.println(kek.getMember("Age").getInternalStructure());
+        OllojStructure[] wohoo  = kek.getMembers("Toy");
+        for(OllojStructure q : wohoo)
+        {
+            System.out.println(q.getInternalStructure());
+        }
 
         OllojStructure asd = new OllojStructure(chips.toOlloj().generateOllojString());
-        //System.out.println(asd.getFullStructure());
+        System.out.println(asd.getFullStructure());
         for(OllojStructure s : asd.getMembers("Toy"))
         {
             System.out.println(s.getFullStructure());
         }
 
         System.out.println(asd.getFullStructure());
-        //Dog max = new Dog(asd);
+        Dog max = new Dog(asd);
 
-        //System.out.println(max.toOlloj().generateOllojString());
-
-        System.out.println("DONE");
+        System.out.println(max.toOlloj().generateOllojString());
     }
 }
