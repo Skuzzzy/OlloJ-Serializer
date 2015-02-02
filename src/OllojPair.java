@@ -43,7 +43,7 @@ public class OllojPair {
         }
         else
         {
-            throw new NullPointerException("Trying to access a String value of ollojPair when it is a OllojSerializable");
+            throw new NullPointerException("Trying to access a String value of OllojPair when it is a OllojSerializable");
         }
     }
     // Get the OllojObject value the pair contains, throws error if it contains an String instead
@@ -55,7 +55,7 @@ public class OllojPair {
         }
         else
         {
-            throw new NullPointerException("Trying to access a OllojSerializable value of ollojPair when it is a String");
+            throw new NullPointerException("Trying to access a OllojSerializable value of OllojPair when it is a String");
         }
     }
 
