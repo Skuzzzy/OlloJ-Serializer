@@ -1,3 +1,8 @@
+import olloj.Olloj;
+import olloj.OllojPair;
+import olloj.OllojSerializable;
+import olloj.OllojStructure;
+
 /**
  * Created by dan on 1/28/15.
  */

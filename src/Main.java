@@ -1,3 +1,5 @@
+import olloj.OllojStructure;
+
 public class Main
 {
 
